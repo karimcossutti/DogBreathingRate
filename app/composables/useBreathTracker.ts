@@ -78,7 +78,13 @@ export function useBreathTracker() {
     _finishSession()
   }
 
+  function generateId(): string {
+    return Date.now().toString(36) + '-' + Math.random().toString(36).slice(2)
+  }
+
   function _finishSession() {
+    if (phase.value !== 'running') return
+
     if (timerInterval) {
       clearInterval(timerInterval)
       timerInterval = null
@@ -93,7 +99,7 @@ export function useBreathTracker() {
     const bpm = Math.round((tapCount.value / durationSeconds) * 60)
 
     const entry: BreathEntry = {
-      id: crypto.randomUUID(),
+      id: generateId(),
       date: new Date().toISOString(),
       bpm,
       tapCount: tapCount.value,
