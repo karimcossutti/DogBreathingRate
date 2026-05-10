@@ -61,8 +61,7 @@
           <p class="result-detail">{{ lastResult.tapCount }} taps · {{ lastResult.durationSeconds }}s</p>
           <p class="result-status" :class="bpmStatusClass">{{ bpmStatusText }}</p>
           <div class="result-actions">
-            <button class="btn-primary" @click="startSession">New Session</button>
-            <button class="btn-ghost" @click="goToHistory">View History</button>
+            <button class="btn-primary" @click="resetToIdle">Done</button>
           </div>
         </div>
 
@@ -166,10 +165,6 @@ function handleTap() {
   _tapTimer = setTimeout(() => { tapPulse.value = false }, 160)
 }
 
-function goToHistory() {
-  resetToIdle()
-  activeTab.value = 'history'
-}
 
 const bpmStatusClass = computed(() => {
   if (!lastResult.value) return ''
