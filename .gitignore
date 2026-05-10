@@ -1,0 +1,23 @@
+# Dependencies
+app/node_modules/
+
+# Nuxt build cache and output
+app/.nuxt/
+app/.output/
+
+# Lockfile (commit this for reproducible Docker builds)
+# app/package-lock.json
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
